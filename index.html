@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Сравнительный анализ: ТОО «ЛифтКомплекс» и ТОО «Каз Сервис Лифт»</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Segoe UI", "Montserrat", Arial, sans-serif;
+    background: #e9eef6;
+    color: #12274d;
+    padding: 20px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    max-width: 1024px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #ffffff 0%, #f3f7fd 100%);
+    padding: 20px;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(16, 42, 92, 0.15);
+  }
+
+  /* ---------- Заголовок ---------- */
+  .main-title {
+    background: linear-gradient(135deg, #0c2a5c 0%, #1a4a94 100%);
+    color: #fff;
+    text-align: center;
+    padding: 18px 20px;
+    border-radius: 24px;
+    margin-bottom: 20px;
+  }
+  .main-title h1 { font-size: 32px; font-weight: 800; }
+  .main-title h2 { font-size: 28px; font-weight: 800; margin-top: 4px; }
+  .main-title h2 span { font-weight: 400; font-size: 22px; margin: 0 8px; }
+
+  /* ---------- Блок компаний ---------- */
+  .intro {
+    display: grid;
+    grid-template-columns: 1fr 90px 1fr;
+    align-items: start;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .intro::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #1a4a94;
+    transform: translateX(-50%);
+  }
+  .company { text-align: center; }
+
+  .company-name {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 800;
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin-bottom: 14px;
+  }
+  .company.left .company-name { background: linear-gradient(135deg, #0d47a1, #1565c0); }
+  .company.right .company-name { background: linear-gradient(135deg, #1b2a4a, #3a4660); }
+
+  .company-sub {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #0d3b8c;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .company-tag {
+    background: #d6e6fa;
+    border-radius: 20px;
+    padding: 12px 16px;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.15;
+    color: #12274d;
+    margin-bottom: 18px;
+  }
+  .site {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    text-align: left;
+  }
+  .site svg { width: 62px; height: 62px; flex-shrink: 0; }
+  .site b { display: block; font-size: 19px; }
+  .site a { font-size: 19px; color: #0d5bd1; font-weight: 600; }
+
+  .vs {
+    position: relative;
+    z-index: 2;
+    width: 78px;
+    height: 78px;
+    margin: 30px auto 0;
+    border-radius: 50%;
+    background: #0c2a5c;
+    color: #fff;
+    font-size: 34px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid #fff;
+  }
+
+  /* ---------- Сравнительная таблица ---------- */
+  table { width: 100%; border-collapse: collapse; }
+
+  .compare {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid #c9d9f0;
+    margin-bottom: 20px;
+  }
+  .compare th {
+    background: #0c2a5c;
+    color: #fff;
+    font-size: 19px;
+    font-weight: 800;
+    padding: 9px 10px;
+  }
+  .compare th:nth-child(2) { background: #1a4a94; }
+  .compare td {
+    text-align: center;
+    padding: 7px 12px;
+    font-size: 17px;
+    border-top: 1px solid #c9d9f0;
+    line-height: 1.25;
+  }
+  .compare td:nth-child(1) { background: #e6f0fc; width: 37%; }
+  .compare td:nth-child(2) { background: #cfe1f8; font-weight: 800; width: 26%; }
+  .compare td:nth-child(3) { background: #f1f2f4; width: 37%; }
+  .compare td.big { font-weight: 800; font-size: 19px; }
+
+  /* ---------- Финансы ---------- */
+  .finance {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    position: relative;
+  }
+  .finance::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #1a4a94;
+  }
+  .fin-head {
+    background: #d6e6fa;
+    border-radius: 20px;
+    padding: 8px 18px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  .fin-head svg { width: 58px; height: 52px; flex-shrink: 0; }
+  .fin-head h3 {
+    font-size: 21px;
+    font-weight: 800;
+    color: #0d3b8c;
+    line-height: 1.2;
+  }
+  .fin-body {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 0 20px;
+    margin-bottom: 14px;
+    min-height: 100px;
+  }
+  .fin-body svg { width: 96px; height: 96px; flex-shrink: 0; }
+  .fin-body h4 {
+    font-size: 23px;
+    font-weight: 800;
+    color: #0d3b8c;
+    line-height: 1.15;
+  }
+  .fin-body p { font-size: 15px; line-height: 1.25; margin-top: 2px; }
+
+  .fin-table {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 2px solid #c9d9f0;
+  }
+  .fin-table th {
+    background: #0c2a5c;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 6px 8px;
+    line-height: 1.15;
+    border-left: 1px solid #3a5a96;
+  }
+  .fin-table th:first-child { border-left: none; }
+  .fin-table td {
+    text-align: center;
+    padding: 6px 8px;
+    font-size: 17px;
+    border-top: 1px solid #c9d9f0;
+    border-left: 1px solid #c9d9f0;
+  }
+  .fin-table td:first-child { border-left: none; }
+  .fin-table tr:nth-child(odd) td { background: #e6f0fc; }
+  .fin-table tr:nth-child(even) td { background: #ffffff; }
+
+  /* ---------- Адаптив ---------- */
+  /* Защита от переполнения в grid-ячейках */
+  .intro > *, .finance > *, .fin-col { min-width: 0; }
+  .fin-col { width: 100%; }
+  img, svg { max-width: 100%; }
+  .site a { word-break: break-all; }
+
+  /* Большие экраны (min-width) */
+  @media (min-width: 1200px) {
+    body { padding: 32px; }
+    .page { max-width: 1120px; padding: 28px; }
+  }
+
+  /* Планшеты (диапазон) */
+  @media (min-width: 761px) and (max-width: 1024px) {
+    body { padding: 14px; }
+    .main-title h1 { font-size: 28px; }
+    .main-title h2 { font-size: 24px; }
+    .company-name { font-size: 22px; }
+    .company-tag { font-size: 22px; }
+    .compare td { font-size: 15px; }
+    .finance { gap: 28px; }
+    .fin-head h3 { font-size: 18px; }
+    .fin-body h4 { font-size: 20px; }
+    .fin-table th, .fin-table td { font-size: 15px; }
+  }
+
+  /* Мобильные и планшеты (max-width) */
+  @media (max-width: 760px) {
+    body { padding: 10px; }
+    .page { padding: 12px; border-radius: 16px; }
+    .main-title { padding: 14px 12px; border-radius: 16px; }
+    .main-title h1 { font-size: 22px; }
+    .main-title h2 { font-size: 18px; line-height: 1.3; }
+    .main-title h2 span { font-size: 16px; margin: 0 4px; }
+
+    .intro { grid-template-columns: 1fr; gap: 14px; }
+    .intro::before, .finance::before { display: none; }
+    .vs { margin: 0 auto; width: 56px; height: 56px; font-size: 24px; }
+    .company-name { font-size: 20px; padding: 8px 14px; }
+    .company-tag { font-size: 20px; padding: 10px 12px; margin-bottom: 12px; }
+    .company-sub { font-size: 13px; }
+    .site { gap: 10px; }
+    .site svg { width: 44px; height: 44px; }
+    .site b, .site a { font-size: 16px; }
+
+    /* Таблица сравнения: каждая строка — карточка */
+    .compare { border-radius: 12px; }
+    .compare table, .compare thead, .compare tbody,
+    .compare tr, .compare th, .compare td { display: block; width: 100% !important; }
+    .compare thead { display: none; }
+    .compare tr { border-top: 3px solid #1a4a94; }
+    .compare tr:first-child { border-top: none; }
+    .compare td { font-size: 15px; padding: 7px 10px; border-top: none; }
+    .compare td:nth-child(1)::before,
+    .compare td:nth-child(3)::before {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #0d3b8c;
+      opacity: .75;
+      margin-bottom: 2px;
+    }
+    .compare td:nth-child(1)::before { content: "ЛифтКомплекс"; }
+    .compare td:nth-child(3)::before { content: "Каз Сервис Лифт"; }
+    .compare td:nth-child(2) {
+      order: -1;
+      background: #0c2a5c;
+      color: #fff;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+    .compare tr { display: flex; flex-direction: column; }
+
+    .finance { grid-template-columns: 1fr; gap: 24px; }
+    .fin-head { padding: 8px 12px; gap: 10px; }
+    .fin-head svg { width: 44px; height: 40px; }
+    .fin-head h3 { font-size: 16px; }
+    .fin-body { padding: 0 6px; gap: 12px; min-height: 0; }
+    .fin-body svg { width: 64px; height: 64px; }
+    .fin-body h4 { font-size: 18px; }
+    .fin-body p { font-size: 14px; }
+    .fin-table th { font-size: 14px; }
+    .fin-table td { font-size: 15px; }
+  }
+
+  /* Маленькие телефоны (max-width) */
+  @media (max-width: 400px) {
+    body { padding: 6px; }
+    .page { padding: 8px; }
+    .main-title h1 { font-size: 19px; }
+    .main-title h2 { font-size: 16px; }
+    .company-name, .company-tag { font-size: 18px; }
+    .fin-table th, .fin-table td { font-size: 13px; padding: 5px 4px; }
+    .fin-body h4 { font-size: 16px; }
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Заголовок -->
+  <div class="main-title">
+    <h1>Сравнительный анализ компаний:</h1>
+    <h2>ТОО «ЛифтКомплекс» <span>vs</span> ТОО «Каз Сервис Лифт»</h2>
+  </div>
+
+  <!-- Компании -->
+  <div class="intro">
+    <div class="company left">
+      <div class="company-name">ТОО «ЛифтКомплекс»</div>
+      <div class="company-sub">Общая характеристика<br>и операционные показатели</div>
+      <div class="company-tag">Лидерство по масштабу<br>и опыту</div>
+      <div class="site">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#0d47a1" stroke-width="4">
+          <circle cx="32" cy="32" r="28"/>
+          <ellipse cx="32" cy="32" rx="12" ry="28"/>
+          <line x1="4" y1="32" x2="60" y2="32"/>
+          <line x1="32" y1="4" x2="32" y2="60"/>
+          <path d="M9 18 Q32 26 55 18"/>
+          <path d="M9 46 Q32 38 55 46"/>
+        </svg>
+        <div>
+          <b>Сайт компании:</b>
+          <a href="https://liftcomplex.kz" target="_blank">https://liftcomplex.kz</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="vs">VS</div>
+
+    <div class="company right">
+      <div class="company-name">ТОО «Каз Сервис Лифт»</div>
+      <div class="company-sub">Общая характеристика<br>и операционные показатели</div>
+      <div class="company-tag">Локальное малое<br>предприятие</div>
+      <div class="site">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#0d47a1" stroke-width="4">
+          <circle cx="32" cy="32" r="28"/>
+          <ellipse cx="32" cy="32" rx="12" ry="28"/>
+          <line x1="4" y1="32" x2="60" y2="32"/>
+          <line x1="32" y1="4" x2="32" y2="60"/>
+          <path d="M9 18 Q32 26 55 18"/>
+          <path d="M9 46 Q32 38 55 46"/>
+        </svg>
+        <div>
+          <b>Сайт компании:</b>
+          <a href="https://kazslift.kz" target="_blank">https://kazslift.kz</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Сравнительная таблица -->
+  <div class="compare">
+    <table>
+      <thead>
+        <tr>
+          <th>ТОО «ЛифтКомплекс»</th>
+          <th>Показатель</th>
+          <th>ТОО «Каз Сервис Лифт»</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2006 (20 лет)</td>
+          <td>Год основания</td>
+          <td>2020 (6 лет)</td>
+        </tr>
+        <tr>
+          <td>Внуков Григорий Сергеевич</td>
+          <td>Руководитель</td>
+          <td>Попов Николай Геннадиевич</td>
+        </tr>
+        <tr>
+          <td>г. Алматы, ул. Ауэзова, д. 163А</td>
+          <td>Адрес (фактический)</td>
+          <td>г. Алматы, мкр-н Алгабас,<br>ул. Ф. Онгарсыновой, 57/1</td>
+        </tr>
+        <tr>
+          <td>80 сотрудников</td>
+          <td>Штат сотрудников</td>
+          <td>6 сотрудников</td>
+        </tr>
+        <tr>
+          <td>950+</td>
+          <td>Лифтов на обслуживании</td>
+          <td>На сайте компании<br>нет данных</td>
+        </tr>
+        <tr>
+          <td>600+</td>
+          <td>Реализованные проекты</td>
+          <td>Нет данных на сайте,<br>нет портфолио</td>
+        </tr>
+        <tr>
+          <td>50+ лифтов и эскалаторов</td>
+          <td>Монтаж в год</td>
+          <td>Нет данных</td>
+        </tr>
+        <tr>
+          <td>Дистрибьютор Silent Elevator, Koyo, Kleemann: работа с Otis, Schindler, KONE</td>
+          <td>Бренды и партнёры</td>
+          <td>Собственное производство<br>малых подъёмников</td>
+        </tr>
+        <tr>
+          <td>От 1 дня, бесплатный подбор</td>
+          <td>Поставка запчастей</td>
+          <td>Не указано</td>
+        </tr>
+        <tr>
+          <td>ЖК, ТРЦ, Аэропорт Алматы, банки, крупные предприятия</td>
+          <td>Типы объектов</td>
+          <td>Кухонные, грузовые и инвалидные подъёмники, частный сектор</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Финансовая динамика -->
+  <div class="finance">
+
+    <!-- ЛифтКомплекс -->
+    <div class="fin-col">
+      <div class="fin-head">
+        <svg viewBox="0 0 64 56" fill="#0d47a1" stroke="#d6e6fa" stroke-width="2">
+          <ellipse cx="20" cy="46" rx="18" ry="7"/>
+          <ellipse cx="20" cy="38" rx="18" ry="7"/>
+          <ellipse cx="20" cy="30" rx="18" ry="7"/>
+          <ellipse cx="44" cy="46" rx="18" ry="7"/>
+          <ellipse cx="44" cy="38" rx="18" ry="7"/>
+          <ellipse cx="44" cy="30" rx="18" ry="7"/>
+          <ellipse cx="44" cy="22" rx="18" ry="7"/>
+          <ellipse cx="44" cy="14" rx="18" ry="7"/>
+        </svg>
+        <h3>ФИНАНСОВАЯ ДИНАМИКА<br>(2023–2025 гг.)</h3>
+      </div>
+
+      <div class="fin-body">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="50" fill="#0d47a1"/>
+          <rect x="26" y="62" width="9" height="14" fill="#fff"/>
+          <rect x="40" y="54" width="9" height="22" fill="#fff"/>
+          <rect x="54" y="46" width="9" height="30" fill="#fff"/>
+          <rect x="68" y="38" width="9" height="38" fill="#fff"/>
+          <polyline points="24,52 40,38 50,44 72,24" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <polygon points="76,18 62,22 72,32" fill="#fff"/>
+        </svg>
+        <div>
+          <h4>Многократный разрыв<br>в выручке</h4>
+          <p>Годовой доход превышает показатели ТОО "Каз Сервис Лифт" в 40 раз</p>
+        </div>
+      </div>
+
+      <div class="fin-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Год</th>
+              <th>Выручка<br> «ЛифтКомплекс»</th>
+              <th>Налоги<br> «ЛифтКомплекс»</th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr><td>2025</td><td>7,09 млрд Т</td><td>114 млн Т</td></tr>
+             <tr><td>2024</td><td>4,17 млрд Т</td><td>67 млн Т</td></tr>
+            <tr><td>2023</td><td>3,67 млрд Т</td><td>59 млн Т</td></tr>
+            
+           
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Каз Сервис Лифт -->
+    <div class="fin-col">
+      <div class="fin-head">
+        <svg viewBox="0 0 64 56" fill="#0d47a1" stroke="#d6e6fa" stroke-width="2">
+          <ellipse cx="20" cy="46" rx="18" ry="7"/>
+          <ellipse cx="20" cy="38" rx="18" ry="7"/>
+          <ellipse cx="20" cy="30" rx="18" ry="7"/>
+          <ellipse cx="44" cy="46" rx="18" ry="7"/>
+          <ellipse cx="44" cy="38" rx="18" ry="7"/>
+          <ellipse cx="44" cy="30" rx="18" ry="7"/>
+          <ellipse cx="44" cy="22" rx="18" ry="7"/>
+          <ellipse cx="44" cy="14" rx="18" ry="7"/>
+        </svg>
+        <h3>ФИНАНСОВАЯ ДИНАМИКА<br>(2023–2025 гг.)</h3>
+      </div>
+
+      <div class="fin-body">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="50" fill="#0d47a1"/>
+          <rect x="26" y="62" width="9" height="14" fill="#fff"/>
+          <rect x="40" y="54" width="9" height="22" fill="#fff"/>
+          <rect x="54" y="46" width="9" height="30" fill="#fff"/>
+          <rect x="68" y="38" width="9" height="38" fill="#fff"/>
+          <polyline points="24,52 40,38 50,44 72,24" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <polygon points="76,18 62,22 72,32" fill="#fff"/>
+        </svg>
+        <div>
+          <h4>Значительно меньший<br>масштаб выручки<br></h4>
+        </div>
+      </div>
+
+      <div class="fin-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Год</th>
+              <th>Выручка<br>«Каз Сервис Лифт»</th>
+              <th>Налоги<br> «Каз Сервис Лифт»</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>2025</td><td>134 млн Т</td><td>2,2 млн Т</td></tr>
+            <tr><td>2024</td><td>163 млн Т</td><td>2,6 млн Т</td></tr>
+            <tr><td>2023</td><td>47 млн Т</td><td>0,76 млн Т</td></tr>
+            
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
